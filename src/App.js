@@ -1,13 +1,23 @@
 import React from 'react'
 
-import Viewport from './components/canvas/Viewport'
+// Site layout (as imported)
+import Menu from './components/layout/Menu'
+import Intro from './components/layout/Intro'
+import Application from './components/layout/Application'
+import About from './components/layout/About'
+import Footer from './components/layout/Footer'
 
+// CSS styling
 import './scss/main.scss'
 
-export default function App () {
+export default () => {
   return (
     <div className="App">
-      <Viewport />
+      <Menu />
+      <Intro />
+      <Application />
+      <About />
+      <Footer />
     </div>
   )
 }
