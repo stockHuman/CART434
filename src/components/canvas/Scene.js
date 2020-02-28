@@ -1,13 +1,60 @@
 import React from 'react'
+import * as CANNON from 'cannon'
+
+import { useCannon, Provider } from './useCannon'
+
+function Plane({ position }) {
+	// Register plane as a physics body with zero mass
+	const ref = useCannon({ mass: 0 }, body => {
+		body.addShape(new CANNON.Plane())
+		body.position.set(...position)
+	})
+	return (
+		<mesh ref={ref} receiveShadow>
+			<planeBufferGeometry attach="geometry" args={[1000, 1000]} />
+			<meshStandardMaterial attach="material" color="#171717" />
+		</mesh>
+	)
+}
+
+function Box({ position }) {
+	// Register box as a physics body with mass
+	const ref = useCannon({ mass: 100000 }, body => {
+		body.addShape(new CANNON.Box(new CANNON.Vec3(1, 1, 1)))
+		body.position.set(...position)
+	})
+	return (
+		<mesh ref={ref} castShadow receiveShadow>
+			<coneBufferGeometry attach="geometry" args={[1, 1, 3]} />
+			<meshStandardMaterial attach="material" roughness={0.5} color="#575757" />
+		</mesh>
+	)
+}
+
 
 export default (props) => {
 	console.log(props)
+	let objects = []
+
+	// template, place objects in array here
+	for (const property in props) {
+		console.log(`${property}: ${props[property]}`)
+
+		// the app has calculated that such an object should exist
+		for (let i = 0; i < props[property]; i++) {
+			objects.push(
+				<Box position={[Math.random(), Math.random(), Math.random()]} key={`${property}-${i}`} />
+			)
+		}
+	}
 	return (
 		<scene>
-			<mesh>
-				<coneBufferGeometry attach="geometry" args={[1, 2, 3]} />
-				<meshStandardMaterial attach="material" color={0xff100f} />
-			</mesh>
+			<pointLight position={[-10, -10, 30]} intensity={0.25} />
+			<spotLight intensity={0.3} position={[30, 30, 50]} angle={0.2} penumbra={1} castShadow />
+			<Provider>
+				<Plane position={[0, 0, -10]} />
+				{objects}
+			</Provider>
 		</scene>
 	)
 }

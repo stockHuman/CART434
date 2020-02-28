@@ -13,10 +13,14 @@ export default class Application extends Component {
 				batteries: 0
 			}
 		}
+
+		this.computeObjects = this.computeObjects.bind(this)
 	}
 
 	computeObjects () {
-
+		// test behaviour
+		let b = this.state.objects.batteries
+		this.setState({objects: { batteries: b+1}})
 	}
 
 	render () {
@@ -24,7 +28,7 @@ export default class Application extends Component {
 		return (
 			<section id="app" role="main">
 				<aside id="form">
-
+					<button onClick={this.computeObjects}>test</button>
 				</aside>
 				<Viewport>
 					<Scene {...objects} />

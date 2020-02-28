@@ -9,22 +9,22 @@ import HDRI from '../../assets/images/royal_esplanade_1k.hdr'
 export default () => {
 	const { gl, scene } = useThree()
 	const pmremGenerator = new PMREMGenerator(gl)
+	const loader = new RGBELoader()
+	loader.setDataType(UnsignedByteType)
 	pmremGenerator.compileEquirectangularShader()
 
+	// note: performance seems severy impacted by this method
   useEffect(() => {
-		new RGBELoader()
-			.setDataType(UnsignedByteType)
-			.load(HDRI, texture => {
+		loader.load(HDRI, texture => {
+			const envMap = pmremGenerator.fromEquirectangular(texture).texture
 
-				const envMap = pmremGenerator.fromEquirectangular(texture).texture
+			// scene.background = envMap
+			scene.environment = envMap
 
-				// scene.background = envMap
-				scene.environment = envMap
-
-				texture.dispose()
-				pmremGenerator.dispose()
-			})
-	})
+			texture.dispose()
+			pmremGenerator.dispose()
+		})
+	}, [scene, loader, pmremGenerator])
 
 	return null
 }
