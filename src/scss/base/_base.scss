@@ -1,3 +1,37 @@
-* {
+*,
+::before,
+::after,
+*:before,
+*:after  {
+	background-repeat: no-repeat;
+	box-sizing: inherit;
+	text-decoration: inherit;
+	vertical-align: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	font-style: inherit;
+	line-height: inherit;
 	margin: 0;
 }
+
+html {
+	box-sizing: border-box;
+	cursor: default;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+body {
+	padding: 0;
+	flex-direction: column;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-moz-font-feature-settings: "liga", "kern";
+	text-rendering: optimizeLegibility;
+	font-feature-settings: "pnum";
+	font-variant-numeric: proportional-nums;
+}
+
+@import 'elements';
