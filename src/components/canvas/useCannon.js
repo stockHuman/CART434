@@ -11,8 +11,8 @@ export function Provider({ children }) {
 	const [world] = useState(() => new World())
 	useEffect(() => {
 		world.broadphase = new NaiveBroadphase()
-		world.solver.iterations = 10
-		world.gravity.set(0, 0, -25)
+		world.solver.iterations = 8
+		world.gravity.set(0, 0, -9.82)
 	}, [world])
 
 	// Run world stepper every frame
