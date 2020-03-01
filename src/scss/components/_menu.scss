@@ -1,6 +1,7 @@
 #menu {
 	position: fixed;
+	top: 0;
 	background: #eee; // temp
-	height: 2em;
+	height: $nav-height;
 	width: 100%;
 }
