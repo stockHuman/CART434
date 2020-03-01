@@ -2,6 +2,10 @@ import React from 'react'
 import * as CANNON from 'cannon'
 
 import { useCannon, Provider } from './useCannon'
+import Model from './Model'
+
+// 3D models
+import Obj from '../../assets/meshes/testobject.glb'
 
 function Plane({ position }) {
 	// Register plane as a physics body with zero mass
@@ -17,21 +21,6 @@ function Plane({ position }) {
 	)
 }
 
-function Box({ position }) {
-	// Register box as a physics body with mass
-	const ref = useCannon({ mass: 100000 }, body => {
-		body.addShape(new CANNON.Box(new CANNON.Vec3(1, 1, 1)))
-		body.position.set(...position)
-	})
-	return (
-		<mesh ref={ref} castShadow receiveShadow>
-			<coneBufferGeometry attach="geometry" args={[1, 1, 3]} />
-			<meshStandardMaterial attach="material" roughness={0.5} color="#575757" />
-		</mesh>
-	)
-}
-
-
 export default (props) => {
 	console.log(props)
 	let objects = []
@@ -43,7 +32,7 @@ export default (props) => {
 		// the app has calculated that such an object should exist
 		for (let i = 0; i < props[property]; i++) {
 			objects.push(
-				<Box position={[Math.random(), Math.random(), Math.random()]} key={`${property}-${i}`} />
+				<Model url={Obj} position={[Math.random(), Math.random(), Math.random()]} key={`${property}-${i}`} />
 			)
 		}
 	}
