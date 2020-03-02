@@ -22,7 +22,6 @@ function Plane({ position }) {
 }
 
 export default (props) => {
-	console.log(props)
 	let objects = []
 
 	// template, place objects in array here
@@ -32,7 +31,12 @@ export default (props) => {
 		// the app has calculated that such an object should exist
 		for (let i = 0; i < props[property]; i++) {
 			objects.push(
-				<Model url={Obj} position={[Math.random(), Math.random(), Math.random()]} key={`${property}-${i}`} />
+				<Model
+					url={Obj}
+					position={[Math.random()* 2, Math.random(), Math.random()]}
+					key={`${property}-${i}`}
+					info={'Test Draidel - 0.45Wh'}
+				/>
 			)
 		}
 	}
