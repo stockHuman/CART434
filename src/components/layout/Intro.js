@@ -3,7 +3,9 @@ import React from 'react'
 export default () => (
 	<section id="intro">
 		<h1 className="title">Streams</h1>
-		<p className="description">ndard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised</p>
+		<p className="description">The notion that internet browsing has any carbon impact at all is largely completely foreign to your average netizen.<br />
+Indeed, online browsing, or other computer-related behavior is generally thought of as carbon neutral, with perhaps some minor concern for the carbon impact of shipping and manufacturing the initial components.
+This project aims to educate and illustrate in a jovial manner, the electrical costs running major services entails, and how that is affected by local and international power delivery.</p>
 		<button onClick={() => {
 			let e = document.getElementById('app')
 			e.scrollIntoView({ behavior: "smooth" })
