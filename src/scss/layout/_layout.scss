@@ -9,7 +9,9 @@
 section {
 	height: 100vh;
 	scroll-snap-align: start;
+	overflow-x: hidden;
 }
 
 @import 'intro';
 @import 'app';
+@import 'footer';

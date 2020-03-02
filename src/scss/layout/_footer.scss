@@ -1,0 +1,21 @@
+#footer {
+	background: var(--col-ac-dark);
+	height: 7rem;
+	scroll-snap-align: end;
+	color: var(--col-text-light);
+	padding: 1rem;
+	text-align: center;
+	.footer-links {
+		padding-top: 1rem;
+		display: flex;
+		max-width: 600px;
+		margin: 0 auto;
+		a {
+			text-decoration: underline;
+			color: var(--col-text-light);
+			@extend %mono;
+			font-size: 12px;
+			padding: 1em;
+		}
+	}
+}
