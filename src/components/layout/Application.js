@@ -28,6 +28,14 @@ export default class Application extends Component {
 
 	render () {
 		const { wattage, objects } = this.state
+
+		const NumberField = ({field, name, hours = 0}) => (
+			<div className="input-group">
+				<label for={name}>{field}</label>
+				<input name={name} placeholder={hours} size="2"/>
+			</div>
+		)
+
 		return (
 			<section id="app" role="main">
 				<aside id="form">
@@ -39,7 +47,15 @@ export default class Application extends Component {
 						<option>Heavy Gaming (Online, Console)</option>
 						<option>Some YouTube Hours</option>
 					</select>
-					<button onClick={this.computeObjects}>test</button>
+					<NumberField field="Hours on Youtube" name="youtube" />
+					<NumberField field="Hours on NetFlix" name="netflix" />
+					<NumberField field="Hours on Facebook" name="facebook" />
+					<NumberField field="Hours using 4G LTE" name="LTE" />
+					<NumberField field="Hours videoconferencing" name="skype" />
+					<select>
+						<option>Canada</option>
+					</select>
+					<button onClick={this.computeObjects}>Calculate Wattage</button>
 				</aside>
 				<Viewport>
 					<Scene {...objects} />
