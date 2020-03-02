@@ -28,13 +28,21 @@ export default class Application extends Component {
 		return (
 			<section id="app" role="main">
 				<aside id="form">
+					<select>
+						<option>Presets</option>
+						<option>Heavy Gaming (Online, PC)</option>
+						<option>Light Gaming (Online, PC)</option>
+						<option>Light Gaming (Local, PC)</option>
+						<option>Heavy Gaming (Online, Console)</option>
+						<option>Some YouTube Hours</option>
+					</select>
 					<button onClick={this.computeObjects}>test</button>
 				</aside>
 				<Viewport>
 					<Scene {...objects} />
 				</Viewport>
-				<span id="app-inayr">in a year</span>
-				<span id="app-wattage">{wattage}</span>
+				<span id="app-inayr" className="info">in a year</span>
+				<span id="app-wattage" className="info">{wattage}</span>
 			</section>
 		)
 	}

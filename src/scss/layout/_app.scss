@@ -1,0 +1,26 @@
+#app {
+	position: relative;
+	color: white;
+	#form { // main field input area
+		position: absolute;
+		z-index: 2;
+	}
+	#app-inayr {
+		position: absolute;
+		z-index: 3;
+		top: 1em;
+		right: 1em;
+	}
+
+	#app-wattage {
+		position: absolute;
+		z-index: 2;
+		bottom: 1em;
+		right: 1em;
+	}
+	.info {
+		text-transform: uppercase;
+		@extend %mono;
+		font-size: 20px;
+	}
+}

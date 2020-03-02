@@ -12,7 +12,7 @@ import './scss/main.scss'
 
 export default () => {
   return (
-    <div className="App">
+    <div id="app-container">
       <Menu />
       <Intro />
       <Application />

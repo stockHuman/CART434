@@ -1,3 +1,12 @@
 button {
 	border-radius: 1em;
+	background: var(--col-ac-dark);
+	border: none;
+	font-size: 14px;
+	letter-spacing: 1px;
+	@extend %mono;
+	padding: 3px 2rem 3px 2rem;
+	color: var(--col-text-light);
+	text-transform: uppercase;
+	cursor: pointer;
 }

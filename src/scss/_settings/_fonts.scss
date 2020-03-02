@@ -1,1 +1,6 @@
-$sans: sans-serif;
+$sans:  sans-serif;
+$mono: 'Fira Code', monospace;
+
+%mono {
+	font-family: $mono;
+}

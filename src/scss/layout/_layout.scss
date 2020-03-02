@@ -1,5 +1,15 @@
+#app-container {
+	scroll-snap-type: proximity;
+	scroll-snap-points-y: repeat(100vh);
+	scroll-snap-type: y proximity;
+	max-height: 100vh;
+	overflow-y: scroll;
+}
+
 section {
 	height: 100vh;
+	scroll-snap-align: start;
 }
 
 @import 'intro';
+@import 'app';
