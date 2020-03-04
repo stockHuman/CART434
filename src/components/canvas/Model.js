@@ -1,11 +1,10 @@
 import React, { useMemo } from 'react'
-import * as CANNON from 'cannon'
+import { Vec3, ConvexPolyhedron } from 'cannon-es'
 import { Geometry } from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { useLoader, Dom } from 'react-three-fiber'
 
 import { useCannon } from './useCannon'
-
 /**
  *
  * @param {string} url The path to a .glb, .gltf file to load
@@ -44,7 +43,7 @@ function Shape (mesh) {
 		const vertices = new Array(geo.vertices.length)
 
 		for (let i = 0; i < vertices.length; i++) {
-			vertices[i] = new CANNON.Vec3(
+			vertices[i] = new Vec3(
 				geo.vertices[i].x,
 				geo.vertices[i].y,
 				geo.vertices[i].z
@@ -58,7 +57,7 @@ function Shape (mesh) {
 		}
 
 		// NOTE: non-convex shapes will produce errors in inopportune collisions
-		return new CANNON.ConvexPolyhedron(vertices, faces)
+		return new ConvexPolyhedron(vertices, faces)
 	}, [mesh])
 
 	return shape

@@ -7,7 +7,7 @@ import Model from './Model'
 // 3D models
 import Obj from '../../assets/meshes/testobject.glb'
 
-function Plane({ position }) {
+function Floor({ position }) {
 	// Register plane as a physics body with zero mass
 	const ref = useCannon({ mass: 0 }, body => {
 		body.addShape(new CANNON.Plane())
@@ -45,7 +45,7 @@ export default (props) => {
 			<pointLight position={[-10, -10, 30]} intensity={0.25} />
 			<spotLight intensity={0.3} position={[30, 30, 50]} angle={0.2} penumbra={1} castShadow />
 			<Provider>
-				<Plane position={[0, 0, -10]} />
+				<Floor position={[0, 0, -10]} />
 				{objects}
 			</Provider>
 		</scene>
