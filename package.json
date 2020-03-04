@@ -11,7 +11,7 @@
     "react-scripts": "3.4.0",
     "react-three-fiber": "^4.0.19",
     "three": "^0.114.0",
-    "use-cannon": "0.0.7"
+    "workerize-loader": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

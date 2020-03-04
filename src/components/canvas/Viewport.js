@@ -17,12 +17,12 @@ export default function Viewport (props) {
 			role="application"
 			id="canvas-container"
 			pixelRatio={Math.min(window.devicePixelRatio, 3) || 1}
-			camera={{ fov: 100, position: [0, -2, 0] }}
+			camera={{ position: [0, 1, 6], fov: 70 }}
 			onMouseMove={onMouseMove}
 			onCreated={({ gl }) => {
 				gl.alpha = false
 				gl.antialias = false
-				gl.setClearColor(props.background || '#000000')
+				gl.setClearColor(props.background || '#EEE')
 				gl.outputEncoding = sRGBEncoding
 				gl.toneMappingExposure = 0.8
 				gl.toneMapping = ACESFilmicToneMapping
