@@ -31,7 +31,7 @@ export default class Application extends Component {
 
 		const NumberField = ({field, name, hours = 0}) => (
 			<div className="input-group">
-				<label for={name}>{field}</label>
+				<label htmlFor={name}>{field}</label>
 				<input name={name} placeholder={hours} size="2"/>
 			</div>
 		)
