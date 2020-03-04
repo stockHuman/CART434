@@ -1,5 +1,5 @@
 import React from 'react'
-import * as CANNON from 'cannon'
+import { Plane } from 'cannon-es'
 
 import { useCannon, Provider } from './useCannon'
 import Model from './Model'
@@ -10,7 +10,7 @@ import Obj from '../../assets/meshes/testobject.glb'
 function Floor({ position }) {
 	// Register plane as a physics body with zero mass
 	const ref = useCannon({ mass: 0 }, body => {
-		body.addShape(new CANNON.Plane())
+		body.addShape(new Plane())
 		body.position.set(...position)
 	})
 	return (
