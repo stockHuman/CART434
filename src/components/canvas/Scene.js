@@ -30,7 +30,7 @@ export default (props) => {
 			objects.push(
 				<Model
 					url={Obj}
-					position={[Math.random()* 2, Math.random() * 10, Math.random()]}
+					position={[2.5 - Math.random() * 5, Math.random() * 30, Math.random()]}
 					key={`${property}-${i}`}
 					info={'Test Draidel - 0.45Wh'}
 				/>

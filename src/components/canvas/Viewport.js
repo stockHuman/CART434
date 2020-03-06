@@ -38,7 +38,7 @@ export default function Viewport (props) {
 					<span style={{color: 'blue'}}>loading</span>
 				</Dom>
 			}>
-				<Env />
+				{/* <Env /> */}
 				<rectAreaLight
 					intensity={3}
 					position={[0, 10, -10]}
@@ -46,6 +46,7 @@ export default function Viewport (props) {
 					height={30}
 					onUpdate={self => self.lookAt(new Vector3(0, 0, 0))}
 				/>
+				<spotLight position={[5, 5, 5]} angle={0.3} penumbra={1} intensity={2} castShadow shadow-mapSize-width={256} shadow-mapSize-height={256} />
 				<fog attach="fog" args={['#fbf7f5', 16, 80]} />
 				<scene>{props.children}</scene>
 			</Suspense>
