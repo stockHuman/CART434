@@ -13,7 +13,7 @@ export default () => {
 	loader.setDataType(UnsignedByteType)
 	pmremGenerator.compileEquirectangularShader()
 
-	// note: performance seems severy impacted by this method
+	// note: performance seems severly impacted by this method
   useEffect(() => {
 		loader.load(HDRI, texture => {
 			const envMap = pmremGenerator.fromEquirectangular(texture).texture
