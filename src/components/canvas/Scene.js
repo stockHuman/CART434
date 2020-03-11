@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useCannon, Physics } from './use-cannon/src/index'
+import { usePlane, Physics } from 'use-cannon'
 import Model from './Model'
 
 // 3D models
@@ -9,7 +9,7 @@ import Obj from '../../assets/meshes/testobject.glb'
 // via https://codesandbox.io/s/r3f-cannon-instanced-physics-g1s88
 function Floor({ position = [0, 0, 0], rotation = [0, 0, 0] }) {
 	// Register plane as a physics body with zero mass
-	const [ref] = useCannon({ mass: 0, type: 'Plane', position, rotation })
+	const [ref] = usePlane(() => ({ mass: 0, position, rotation }))
 	return (
 		<mesh ref={ref} receiveShadow>
 			<planeBufferGeometry attach="geometry" args={[100, 100]} />
