@@ -1,5 +1,5 @@
 import React, { useCallback, Suspense, useRef } from 'react'
-import { sRGBEncoding, ACESFilmicToneMapping, Vector3 } from 'three'
+import { sRGBEncoding, ACESFilmicToneMapping } from 'three'
 import { Canvas, Dom } from 'react-three-fiber'
 import { RectAreaLightUniformsLib } from 'three/examples/jsm/lights/RectAreaLightUniformsLib'
 
@@ -22,7 +22,7 @@ export default function Viewport (props) {
 			onCreated={({ gl }) => {
 				gl.alpha = false
 				gl.antialias = false
-				gl.setClearColor(props.background || '#EEE')
+				gl.setClearColor(props.background || '#BFBFBF')
 				gl.outputEncoding = sRGBEncoding
 				gl.toneMappingExposure = 0.8
 				gl.toneMapping = ACESFilmicToneMapping
@@ -38,16 +38,7 @@ export default function Viewport (props) {
 					<span style={{color: 'blue'}}>loading</span>
 				</Dom>
 			}>
-				{/* <Env /> */}
-				<rectAreaLight
-					intensity={3}
-					position={[0, 10, -10]}
-					width={30}
-					height={30}
-					onUpdate={self => self.lookAt(new Vector3(0, 0, 0))}
-				/>
-				<spotLight position={[5, 5, 5]} angle={0.3} penumbra={1} intensity={2} castShadow shadow-mapSize-width={256} shadow-mapSize-height={256} />
-				<fog attach="fog" args={['#fbf7f5', 16, 80]} />
+				<Env />
 				<scene>{props.children}</scene>
 			</Suspense>
 		</Canvas>

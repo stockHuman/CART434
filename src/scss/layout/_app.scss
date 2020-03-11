@@ -1,6 +1,5 @@
 #app {
 	position: relative;
-	color: white;
 	#form { // main field input area
 		position: absolute;
 		z-index: 2;
@@ -17,7 +16,7 @@
 			display: flex;
 			justify-content: space-between;
 			padding-top: 1em;
-			color: var(--col-text-light);
+			color: var(--col-text-dark);
 
 			input {
 				background: none;
