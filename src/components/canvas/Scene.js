@@ -6,6 +6,7 @@ import Model from './Model'
 // 3D models
 import ModelLamp from '../../assets/meshes/MichaelH_Pixies_StreetLamp_MOD.001.glb'
 import ModelBattery from '../../assets/meshes/MichaelH_Pixies_Battery_MOD.000.glb'
+import ModelContainer from '../../assets/meshes/MichaelH_Pixies_Container_MOD.001.glb'
 
 // via https://codesandbox.io/s/r3f-cannon-instanced-physics-g1s88
 function Floor({ position = [0, 0, 0], rotation = [0, 0, 0] }) {
@@ -49,7 +50,7 @@ export default (props) => {
 				shadow-mapSize-width={256}
 				shadow-mapSize-height={256}
 			/>
-			<Physics iterations={20} size={40}>
+			<Physics iterations={10} size={40}>
 				<Floor rotation={[-Math.PI / 2, 0, 0]}  />
 				{ objects.map(object => (
 					<Model
@@ -62,6 +63,13 @@ export default (props) => {
 				<Model
 					url={ModelLamp}
 					position={[3, 5, 0]}
+					info={'Light a small town for a week'}
+				/>
+				<Model
+					url={ModelContainer}
+					position={[5, 10, 0]}
+					rotation={[Math.PI / 4, 0, 2]}
+					mass={200}
 					info={'Light a small town for a week'}
 				/>
 			</Physics>
