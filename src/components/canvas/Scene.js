@@ -1,6 +1,6 @@
 import React from 'react'
-
 import { usePlane, Physics } from 'use-cannon'
+
 import Model from './Model'
 
 // 3D models
@@ -40,16 +40,6 @@ export default (props) => {
 
 	return (
 		<scene>
-			<hemisphereLight intensity={0.35} />
-			<spotLight
-				intensity={0.3}
-				position={[30, 30, 50]}
-				angle={0.2}
-				penumbra={1}
-				castShadow
-				shadow-mapSize-width={256}
-				shadow-mapSize-height={256}
-			/>
 			<Physics iterations={10} size={40}>
 				<Floor rotation={[-Math.PI / 2, 0, 0]}  />
 				{ objects.map(object => (

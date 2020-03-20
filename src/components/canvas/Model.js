@@ -11,10 +11,13 @@ import { getGeometry } from './util/util'
  * @param {Vector3} position where to initially place the model
  */
 export default function Model(props) {
-	console.log(props.url)
 	const { nodes } = useLoader(GLTFLoader, props.url)
 	const geo = useMemo(() => getGeometry(nodes.Collider || nodes.Object), [nodes])
-	const [ref] = useConvexPolyhedron(() => ({ mass: props.mass || 1, ...props, args: geo }))
+	const [ref] = useConvexPolyhedron(() => ({
+		...props,
+		mass: props.mass || 1,
+		args: geo
+	}))
 
 	return (
 		<group ref={ref}>
