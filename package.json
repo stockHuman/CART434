@@ -5,6 +5,7 @@
   "dependencies": {
     "cannon": "^0.6.2",
     "cannon-es": "^0.8.0",
+    "lerp": "^1.0.3",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
