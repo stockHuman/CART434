@@ -22,7 +22,7 @@ export default function Model(props) {
 	return (
 		<group ref={ref}>
 			<Dom className="model-info"><span>{props.info}</span></Dom>
-			<mesh castShadow ref={ref} dispose={null}>
+			<mesh receiveShadow castShadow ref={ref} dispose={null}>
 				<primitive object={nodes.Object} attach="geometry" />
 				<meshNormalMaterial attach="material" />
 			</mesh>
