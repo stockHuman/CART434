@@ -1,15 +1,14 @@
 import React, { useCallback, Suspense, useRef } from 'react'
 import { sRGBEncoding, ACESFilmicToneMapping } from 'three'
 import { useThree, useFrame, Canvas, Dom  } from 'react-three-fiber'
-import { RectAreaLightUniformsLib } from 'three/examples/jsm/lights/RectAreaLightUniformsLib'
 import lerp from 'lerp'
 
 import Env from './Env'
 
 export default function Viewport (props) {
-	RectAreaLightUniformsLib.init()
 	const mouse = useRef([0, 0])
 	const onMouseMove = useCallback(({ clientX: x, clientY: y }) => (mouse.current = [x - window.innerWidth / 2, y - window.innerHeight / 2]), [])
+	const d = 8.25
 
 	return (
 		<Canvas
@@ -31,6 +30,16 @@ export default function Viewport (props) {
 			gl2
 			concurrent
 		>
+			<directionalLight
+				position={[-8, 12, 8]}
+				shadow-camera-left={d * -1}
+				shadow-camera-bottom={d * -1}
+				shadow-camera-right={d}
+				shadow-camera-top={d}
+				shadow-camera-near={0.1}
+				shadow-camera-far={1500}
+				castShadow
+			/>
 			<Suspense fallback={
 				<Dom center
 					className="loader"
@@ -39,16 +48,6 @@ export default function Viewport (props) {
 				</Dom>
 			}>
 				<Env />
-				<hemisphereLight intensity={0.35} />
-				<spotLight
-					intensity={0.3}
-					position={[30, 30, 50]}
-					angle={0.2}
-					penumbra={1}
-					castShadow
-					shadow-mapSize-width={256}
-					shadow-mapSize-height={256}
-				/>
 				<Motion mouse={mouse}>
 					<scene>{props.children}</scene>
 				</Motion>
