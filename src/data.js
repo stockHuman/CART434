@@ -1,16 +1,19 @@
 // 3D models
-import modelLamp from './assets/meshes/StreetLamp.002.glb'
-import modelBattery from './assets/meshes/MichaelH_Pixies_Battery_MOD.000.glb'
-import modelContainer from './assets/meshes/Container.002.glb'
-import modelBean from './assets/meshes/MichaelH_Pixies_Bean_MOD.002.glb'
+import modelLamp from './assets/meshes/StreetLamp.glb'
+import modelBattery from './assets/meshes/Battery.glb'
+import modelContainer from './assets/meshes/Container.glb'
+import modelBean from './assets/meshes/Bean.glb'
+import modelPlane from './assets/meshes/Plane.glb'
 
 
 const lamp = {
-	url: modelLamp
+	url: modelLamp,
+	mass: 5
 }
 
 const battery = {
-	url: modelBattery
+	url: modelBattery,
+	mass: 1
 }
 
 const container = {
@@ -19,7 +22,13 @@ const container = {
 }
 
 const bean = {
-	url: modelBean
+	url: modelBean,
+	mass: 0.4
 }
 
-export default { lamp, battery, container, bean }
+const airplane = {
+	url: modelPlane,
+	mass: 600
+}
+
+export default { lamp, battery, container, bean, airplane }
