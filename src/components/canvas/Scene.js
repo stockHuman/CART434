@@ -35,7 +35,7 @@ export default (props) => {
 	}
 
 	return (
-		<Physics iterations={20}>
+		<Physics iterations={10} broadphase="SAP">
 			<Floor rotation={[-Math.PI / 2, 0, 0]}  />
 			{ objects.map(object => (
 				<Model
@@ -48,15 +48,14 @@ export default (props) => {
 			<Model
 				url={data.lamp.url}
 				position={[1, 15, 0]}
-				rotation={[0, 0, 2]}
+				rotation={[0, 0.4, 1]}
 				mass={3}
-				debug
 				info={'Light a small town for a week'}
 			/>
 			<Model
 				url={data.container.url}
-				position={[2, 10, 0]}
-				rotation={[Math.PI / 4, 0, 2]}
+				position={[4, 10, 0]}
+				rotation={[0, 0, 2]}
 				mass={200}
 				debug
 				info={'Ship A container to China from X'}
@@ -66,7 +65,7 @@ export default (props) => {
 				position={[-2, 10, 0]}
 				rotation={[Math.PI, 1, 2]}
 				mass={0.1}
-				info={'Light a small town for a week'}
+				info={'Big bean'}
 			/>
 		</Physics>
 	)
