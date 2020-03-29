@@ -1,6 +1,6 @@
 // via https://github.com/donmccurdy/three-to-cannon/blob/master/index.js
 
-import { Geometry, BufferGeometry, Vector3, Quaternion, Matrix4 } from 'three'
+import { Geometry, BufferGeometry, Vector3, Quaternion } from 'three'
 
 /**
  * Returns a single geometry for the given object. If the object is compound,
@@ -9,7 +9,6 @@ import { Geometry, BufferGeometry, Vector3, Quaternion, Matrix4 } from 'three'
  * @return {THREE.Geometry}
  */
 export function getGeometry (object) {
-	var matrix, mesh
 	const meshes = getMeshes(object)
 	const combined = new Geometry()
 
@@ -36,6 +35,7 @@ export function getGeometry (object) {
 		return _tempGeo.scale(scale.x, scale.y, scale.z)
 	}
 
+	let mesh
 	// Recursively merge geometry, preserving local transforms.
 	while ((mesh = meshes.pop())) {
 		mesh.updateMatrixWorld()
