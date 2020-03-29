@@ -34,6 +34,18 @@ body {
 	font-size: 18px;
 	font-feature-settings: "pnum";
 	font-variant-numeric: proportional-nums;
+	scrollbar-color: black #F5F5F5;
+  scrollbar-width: thin;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #000000;
+}
+
 
 @import 'elements';
