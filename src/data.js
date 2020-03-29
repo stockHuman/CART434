@@ -32,3 +32,20 @@ const airplane = {
 }
 
 export default { lamp, battery, container, bean, airplane }
+
+// All values represented in Watt-hours
+export const equivalencies = {
+	youtube: 222, // 60 * 3.75Wh (2500mAh @ 1.5V), or 60 min * 1 AA battery / min
+	LTE: 0.55, // average for most smarphone activities over LTE
+	skype: 360, // given similar assumptions to YouTube
+	baseline: { // add to total (not multiplied by hours per day)
+		phone: 8, // (~2500mAh @ 3.7V) not fully discharged every night
+		tablet: 10,
+		laptop: 45, // based off of common laptop usage patterns, assuming 2015 mbp
+		glaptop: 100,
+	},
+	constants: {
+		router: 8,
+		celltower: 2.95890 // Humar, I., et al. 2011. (10.8kWh / year)
+	}
+}
