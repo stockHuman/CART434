@@ -52,9 +52,10 @@ export function getGeometry (object) {
 		}
 	}
 
-	matrix = new Matrix4()
-	matrix.scale(object.scale)
-	combined.applyMatrix(matrix)
+	// matrix = new Matrix4()
+	// matrix.scale(object.scale)
+	// combined.applyMatrix(matrix)
+
 	return combined
 }
 
