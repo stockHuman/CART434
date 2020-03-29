@@ -66,8 +66,16 @@ export default class Application extends Component {
 					<NumberField hours={values.facebook} field="Hours on Facebook" name="facebook" />
 					<NumberField hours={values.LTE} field="Hours using 4G LTE" name="LTE" />
 					<NumberField hours={values.skype} field="Hours videoconferencing" name="skype" />
-					<select>
-						<option>Canada</option>
+					<select name="device">
+						<option value="-1">Primary device</option>
+						<option value="0">Smartphone</option>
+						<option value="1">Netbook / Tablet</option>
+						<option value="2">Laptop</option>
+						<option value="3">Gaming Laptop</option>
+						<option value="4">Desktop, &lt; 350W</option>
+						<option value="5">Desktop, ~ 450W</option>
+						<option value="6">Desktop, &gt; 500W</option>
+						<option value="7">Pro Desktop, Multi-monitor setup</option>
 					</select>
 					<button onClick={this.computeObjects}>Calculate Wattage</button>
 				</aside>
