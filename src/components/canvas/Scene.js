@@ -41,7 +41,7 @@ export default (props) => {
 				<Model
 					url={object.url}
 					position={object.position}
-					info={object.info}
+					overlay={object.info}
 					key={object.key}
 				/>
 			)) }
@@ -50,22 +50,21 @@ export default (props) => {
 				position={[1, 15, 0]}
 				rotation={[0, 0.4, 1]}
 				mass={3}
-				info={'Light a small town for a week'}
+				overlay={'Light a small town for a week'}
 			/>
 			<Model
 				url={data.container.url}
 				position={[4, 10, 0]}
 				rotation={[0, 0, 2]}
 				mass={200}
-				debug
-				info={'Ship A container to China from X'}
+				overlay={'Ship A container to China from X'}
 			/>
 			<Model
 				url={data.bean.url}
 				position={[-2, 10, 0]}
 				rotation={[Math.PI, 1, 2]}
 				mass={0.1}
-				info={'Big bean'}
+				overlay={'Big bean'}
 			/>
 		</Physics>
 	)
