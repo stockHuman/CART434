@@ -16,7 +16,20 @@ function Floor({ position = [0, 0, 0], rotation = [0, 0, 0] }) {
 	)
 }
 
-export default (props) => {
+// function Meshes ({object, count}) {
+// 	return (
+// 		<instancedMesh args={[null, null, count]}>
+// 			<Model
+// 				url={object.url}
+// 				position={object.position}
+// 				overlay={object.info}
+// 				key={object.key}
+// 			/>
+// 		</instancedMesh>
+// 	)
+// }
+
+export default function Scene (props) {
 	let objects = []
 
 	// template, place objects in array here
@@ -26,7 +39,7 @@ export default (props) => {
 		// the app has calculated that such an object should exist
 		for (let i = 0; i < props[property]; i++) {
 			objects.push({
-				url: data.battery.url,
+				url: data.bean.url,
 				info: `12 AA batteries - ${Math.floor(Math.random() * 5)}GWh`,
 				position: [2.5 - Math.random() * 5, Math.random() * 30, Math.random()],
 				key: Math.random()
