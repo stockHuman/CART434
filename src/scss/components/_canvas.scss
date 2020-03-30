@@ -9,15 +9,16 @@
 	}
 	font-size: 14px;
 	padding: 3px 8px 3px 8px;
-	border-radius: 1px;
 	@extend %mono;
 	span {
 		transform: translate3d(32px, -16px, 0);
 		position: absolute;
 		width: max-content;
+		opacity: 0.8;
 		&:hover {
 			background: var(--col-primary);
 			color: white;
+			opacity: 1;
 		}
 	}
 }
