@@ -14,7 +14,7 @@ export default ({ string, options = { position: [0, 0, 0] }, ...props }) => {
 	useFrame(() => {
 		t += speed
 		const s = Math.cos(t)
-		ref.current.rotation.set(s * -2, 0, s * 0.05)
+		ref.current.rotation.set(s * -6, 0, s * 0.05)
 	})
 
 	return (
@@ -22,7 +22,7 @@ export default ({ string, options = { position: [0, 0, 0] }, ...props }) => {
 			<textGeometry attach="geometry"
 				args={[string, { ...{ font }, ...props }]}
 				onUpdate={geo => geo.center()} />
-			<meshNormalMaterial attach="material" />
+			<meshStandardMaterial attach="material" color={options.color||'#f5f50f'} metalness={1.0} roughness={0.1} />
 		</mesh>
 	)
 }
