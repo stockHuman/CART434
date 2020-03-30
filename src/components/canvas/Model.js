@@ -3,11 +3,11 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { useLoader, Dom } from 'react-three-fiber'
 import { useConvexPolyhedron } from 'use-cannon'
 
-import { getGeometry } from './util/util'
+import { getGeometry, mergeCoplanarFaces } from './util/util'
 
 export default function Model(props) {
 	const { nodes } = useLoader(GLTFLoader, props.url)
-	const geo = useMemo(() => getGeometry(nodes.Collider || nodes.Object), [nodes])
+	const geo = useMemo(() => mergeCoplanarFaces(getGeometry(nodes.Collider || nodes.Object)), [nodes])
 
 	const [ref] = useConvexPolyhedron(() => ({
 		...props,
