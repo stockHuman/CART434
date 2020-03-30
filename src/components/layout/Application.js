@@ -23,6 +23,7 @@ export default class Application extends Component {
 	}
 
 	computeObjects () {
+		console.log('test')
 		// test behaviour
 		let { objects } = this.state
 		const { children } = this.ref.current
@@ -54,20 +55,21 @@ export default class Application extends Component {
 			watts += yearlyWatts(equivalencies[data.name] * data.value)
 		})
 
-		switch (presetInputs[1].value) {
-			case 0: watts += yearlyWatts(equivalencies.baseline.phone); break
-			case 1: watts += yearlyWatts(equivalencies.baseline.tablet); break
-			case 2: watts += yearlyWatts(equivalencies.baseline.laptop); break
-			case 3: watts += yearlyWatts(equivalencies.baseline.glaptop); break
-			case 4: watts += yearlyWatts(equivalencies.baseline.desktop); break
-			case 5: watts += yearlyWatts(equivalencies.baseline.desktop); break
-			case 6: watts += yearlyWatts(equivalencies.baseline.desktop); break
-			case 7: watts += yearlyWatts(equivalencies.baseline.desktop); break
-			default: return
+		switch (presetInputs[1].data.value) {
+			case 0: watts += yearlyWatts(equivalencies.baseline.phone); break;
+			case 1: watts += yearlyWatts(equivalencies.baseline.tablet); break;
+			case 2: watts += yearlyWatts(equivalencies.baseline.laptop); break;
+			case 3: watts += yearlyWatts(equivalencies.baseline.glaptop); break;
+			case 4: watts += yearlyWatts(equivalencies.baseline.desktop); break;
+			case 5: watts += yearlyWatts(equivalencies.baseline.desktop); break;
+			case 6: watts += yearlyWatts(equivalencies.baseline.desktop); break;
+			case 7: watts += yearlyWatts(equivalencies.baseline.desktop); break;
+			default: break;
 		}
 
-		if (presetInputs[1].value === 0)
+		if (presetInputs[1].data.value === 0) {
 			watts += equivalencies.constants.celltower
+		}
 
 		this.setState({
 			objects: { bean: objects.bean + 1 },
