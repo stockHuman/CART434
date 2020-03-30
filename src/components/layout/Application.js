@@ -28,7 +28,7 @@ export default class Application extends Component {
 		const { children } = this.ref.current
 
 		const fields = Array.from(children).map(el => {
-			if (el.className == 'input-group') {
+			if (el.className === 'input-group') {
 				return ({
 					type: 'hour',
 					data: {
@@ -36,12 +36,12 @@ export default class Application extends Component {
 						value: parseInt(el.lastChild.value || el.lastChild.attributes.placeholder.value)
 					}
 				})
-			} else if (el.tagName == 'SELECT') {
+			} else if (el.tagName === 'SELECT') {
 				return ({ type: 'preset', data: {
 					name: el.attributes.name.value,
 					value: parseInt(el.selectedOptions[0].value)
 				}})
-			}
+			} else { return null }
 		})
 
 		const hourInputs = fields.filter(i => i && i.type === 'hour')
@@ -63,9 +63,10 @@ export default class Application extends Component {
 			case 5: watts += yearlyWatts(equivalencies.baseline.desktop); break
 			case 6: watts += yearlyWatts(equivalencies.baseline.desktop); break
 			case 7: watts += yearlyWatts(equivalencies.baseline.desktop); break
+			default: return
 		}
 
-		if (presetInputs[1].value == 0)
+		if (presetInputs[1].value === 0)
 			watts += equivalencies.constants.celltower
 
 		this.setState({
