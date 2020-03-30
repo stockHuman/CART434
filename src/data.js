@@ -38,6 +38,7 @@ export default { lamp, battery, container, bean, airplane }
 export const equivalencies = {
 	youtube: 222, // 60 * 3.75Wh (2500mAh @ 1.5V), or 60 min * 1 AA battery / min
 	LTE: 0.55, // average for most smarphone activities over LTE
+	facebook: 0, // update
 	skype: 360, // given similar assumptions to YouTube
 	netflix: 260, // via IEA study, derived from CarbonBrief analysis
 	baseline: { // add to total (not multiplied by hours per day)
@@ -45,6 +46,7 @@ export const equivalencies = {
 		tablet: 10,
 		laptop: 45, // based off of common laptop usage patterns, assuming 2015 mbp
 		glaptop: 100,
+		desktop: 120,
 	},
 	constants: {
 		router: 8,
