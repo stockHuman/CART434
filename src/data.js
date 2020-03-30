@@ -13,7 +13,8 @@ const lamp = {
 
 const battery = {
 	url: modelBattery,
-	mass: 1
+	mass: 1,
+	overlay: 'Use 100 AA batteries',
 }
 
 const container = {
