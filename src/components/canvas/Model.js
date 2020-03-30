@@ -15,11 +15,13 @@ export default function Model(props) {
 		args: geo
 	}))
 
+	const cloned = nodes.Object.clone()
+
 	return (
 		<group ref={ref}>
-			<Dom className="model-info"><span>{props.overlay}{props.debug ? <p>DEBUG</p> : null}</span></Dom>
+			<Dom className="model-info"><span>{props.overlay}</span></Dom>
 			<mesh receiveShadow castShadow>
-				<primitive object={nodes.Object} attach="geometry" />
+				<primitive object={cloned} attach="geometry" />
 			</mesh>
 			{props.debug ?
 				<mesh geometry={geo}>
