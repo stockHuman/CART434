@@ -67,17 +67,17 @@ export default function Scene (props) {
 			/>
 			<Model
 				url={data.container.url}
-				position={[2, 11, -6]}
+				position={[2, 20, -6]}
 				rotation={[-1, 0.2, 1]}
 				mass={200}
 				overlay={'Ship A container to China from X'}
 			/>
 			<Model
-				url={data.bean.url}
-				position={[-3, 10, 0]}
-				rotation={[Math.PI, 1, 2]}
-				mass={0.1}
-				overlay={'Big bean'}
+				url={data.container.url}
+				position={[2, 11, -6]}
+				rotation={[-1, 0.2, 1]}
+				mass={200}
+				overlay={'Ship A container to China'}
 			/>
 		</Physics>
 	)
