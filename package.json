@@ -21,6 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://live.arthem.co/site/C434/",
   "eslintConfig": {
     "extends": "react-app"
   },
