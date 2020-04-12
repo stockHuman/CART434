@@ -4,15 +4,15 @@
   "private": true,
   "dependencies": {
     "cannon": "^0.6.2",
-    "cannon-es": "^0.8.7",
+    "cannon-es": "^0.9.0",
     "lerp": "^1.0.3",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "react-three-fiber": "^4.0.23",
+    "react-three-fiber": "^4.0.28",
     "three": "^0.115.0",
-    "use-cannon": "^0.2.10",
+    "use-cannon": "^0.4.3",
     "workerize-loader": "^1.1.0"
   },
   "scripts": {
