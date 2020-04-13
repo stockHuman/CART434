@@ -19,8 +19,6 @@ export default function Viewport (props) {
 			camera={{ position: [0, 1, 6], fov: 70 }}
 			onMouseMove={onMouseMove}
 			onCreated={({ gl }) => {
-				gl.alpha = false
-				gl.antialias = false
 				gl.setClearColor(props.background || '#BFBFBF')
 				gl.outputEncoding = sRGBEncoding
 				gl.toneMappingExposure = 0.8
@@ -28,6 +26,7 @@ export default function Viewport (props) {
 				gl.physicallyCorrectLights = true
 			}}
 			gl2
+			shadowMap
 			concurrent
 		>
 			<directionalLight
