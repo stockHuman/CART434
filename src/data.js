@@ -4,6 +4,7 @@ import modelBattery from './assets/meshes/Battery.glb'
 import modelContainer from './assets/meshes/Container.glb'
 import modelBean from './assets/meshes/Bean.glb'
 import modelPlane from './assets/meshes/Plane.glb'
+import modelArm from './assets/meshes/Arm.glb'
 
 
 const lamp = {
@@ -32,7 +33,12 @@ const airplane = {
 	mass: 600
 }
 
-export default { lamp, battery, container, bean, airplane }
+const arm = {
+	url: modelArm,
+	mass: 1
+}
+
+export default { lamp, battery, container, bean, airplane, arm }
 
 // All values represented in Watt-hours
 export const equivalencies = {
