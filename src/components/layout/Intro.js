@@ -10,6 +10,5 @@ This project aims to educate and illustrate in a jovial manner, the electrical c
 			let e = document.getElementById('app')
 			e.scrollIntoView({ behavior: "smooth" })
 		}}>View the app</button>
-		<div className="scroll-me"></div>
 	</section>
 )
