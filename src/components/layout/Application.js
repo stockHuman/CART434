@@ -143,7 +143,7 @@ export default class Application extends Component {
 						options={
 							{
 								position: [0, 2, -10],
-								color: 'white'
+								color: '#3CB371'
 							}
 						}
 						size={2}
