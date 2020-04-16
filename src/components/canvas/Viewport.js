@@ -1,5 +1,5 @@
 import React, { useCallback, Suspense, useRef } from 'react'
-import { sRGBEncoding, ACESFilmicToneMapping, PCFSoftShadowMap } from 'three'
+import { ACESFilmicToneMapping } from 'three'
 import { useThree, useFrame, Canvas, Dom } from 'react-three-fiber'
 import lerp from 'lerp'
 
@@ -18,20 +18,22 @@ export default function Viewport (props) {
 			pixelRatio={Math.min(window.devicePixelRatio, 3) || 1}
 			camera={{ position: [0, 1, 6], fov: 70 }}
 			onMouseMove={onMouseMove}
+			gl={{
+				antialias: true,
+				physicallyCorrectLights: true,
+				toneMappingExposure: 0.8,
+				toneMapping: ACESFilmicToneMapping,
+			}}
 			onCreated={({ gl }) => {
 				gl.setClearColor(props.background || '#BFBFBF')
-				gl.outputEncoding = sRGBEncoding
-				gl.toneMappingExposure = 0.8
-				gl.toneMapping = ACESFilmicToneMapping
-				gl.physicallyCorrectLights = true
-				gl.shadowMap.type = PCFSoftShadowMap
 			}}
+			sRGB
 			gl2
 			shadowMap
 			concurrent
 		>
 			<spotLight
-        intensity={4}
+        intensity={1}
         position={[-2, 2, 2]}
         shadow-mapSize-width={2048}
 				shadow-mapSize-height={2048}
@@ -39,7 +41,7 @@ export default function Viewport (props) {
         castShadow
       />
 			<spotLight
-        intensity={4}
+        intensity={1}
         position={[2, 2, 2]}
         shadow-mapSize-width={2048}
 				shadow-mapSize-height={2048}
@@ -56,7 +58,7 @@ export default function Viewport (props) {
         shadow-camera-top={d}
         shadow-camera-near={0.1}
 				shadow-camera-far={1500}
-				intensity={4}
+				intensity={1}
         castShadow
       />
 
