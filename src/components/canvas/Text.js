@@ -22,7 +22,7 @@ export default ({ string, options = { position: [0, 0, 0] }, ...props }) => {
 			<textGeometry attach="geometry"
 				args={[string, { ...{ font }, ...props }]}
 				onUpdate={geo => geo.center()} />
-			<meshStandardMaterial attach="material" color={options.color||'#f5f50f'} metalness={1.0} roughness={0.1} />
+			<meshStandardMaterial attach="material" color={options.color||'#f5f50f'} metalness={1.0} roughness={0.3} />
 		</mesh>
 	)
 }
