@@ -1,9 +1,9 @@
 import React, { useCallback, Suspense, useRef } from 'react'
-import { sRGBEncoding, ACESFilmicToneMapping } from 'three'
-import { useThree, useFrame, Canvas, Dom  } from 'react-three-fiber'
+import { sRGBEncoding, ACESFilmicToneMapping, PCFSoftShadowMap } from 'three'
+import { useThree, useFrame, Canvas, Dom } from 'react-three-fiber'
 import lerp from 'lerp'
 
-import Env from './Env'
+// import Env from './Env'
 
 export default function Viewport (props) {
 	const mouse = useRef([0, 0])
@@ -24,21 +24,42 @@ export default function Viewport (props) {
 				gl.toneMappingExposure = 0.8
 				gl.toneMapping = ACESFilmicToneMapping
 				gl.physicallyCorrectLights = true
+				gl.shadowMap.type = PCFSoftShadowMap
 			}}
 			gl2
 			shadowMap
 			concurrent
 		>
+			<spotLight
+        intensity={4}
+        position={[-2, 2, 2]}
+        shadow-mapSize-width={2048}
+				shadow-mapSize-height={2048}
+				penumbra={0.2}
+        castShadow
+      />
+			<spotLight
+        intensity={4}
+        position={[2, 2, 2]}
+        shadow-mapSize-width={2048}
+				shadow-mapSize-height={2048}
+				penumbra={0.2}
+        castShadow
+      />
+			<fog attach="fog" args={[0xdfdfdf, 35, 65]} />
+
 			<directionalLight
-				position={[-8, 12, 8]}
-				shadow-camera-left={d * -1}
-				shadow-camera-bottom={d * -1}
-				shadow-camera-right={d}
-				shadow-camera-top={d}
-				shadow-camera-near={0.1}
+        position={[-8, 12, 8]}
+        shadow-camera-left={d * -1}
+        shadow-camera-bottom={d * -1}
+        shadow-camera-right={d}
+        shadow-camera-top={d}
+        shadow-camera-near={0.1}
 				shadow-camera-far={1500}
-				castShadow
-			/>
+				intensity={4}
+        castShadow
+      />
+
 			<Suspense fallback={
 				<Dom center
 					className="loader"
@@ -46,7 +67,6 @@ export default function Viewport (props) {
 					<span style={{color: 'blue'}}>loading</span>
 				</Dom>
 			}>
-				<Env />
 				<Motion mouse={mouse}>
 					<scene>{props.children}</scene>
 				</Motion>
