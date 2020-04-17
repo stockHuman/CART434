@@ -4,7 +4,7 @@ import typeface from '../../assets/fonts/uni-neue-italic.json'
 import { Font } from 'three/src/extras/core/Font'
 
 // implements https://threejs.org/docs/#api/en/geometries/TextGeometry
-export default ({ string, options = { position: [0, 0, 0] }, ...props }) => {
+export default ({ string, options = { position: [ 0, 0, 0 ] }, ...props }) => {
 	const ref = useRef()
 	const font = new Font(typeface)
 
@@ -18,11 +18,22 @@ export default ({ string, options = { position: [0, 0, 0] }, ...props }) => {
 	})
 
 	return (
-		<mesh ref={ref} position={options.position} rotation={options.rotation || [0, 0, 0]}>
-			<textGeometry attach="geometry"
-				args={[string, { ...{ font }, ...props }]}
-				onUpdate={geo => geo.center()} />
-			<meshStandardMaterial attach="material" color={options.color||'#f5f50f'} metalness={1.0} roughness={0.3} />
+		<mesh
+			ref={ref}
+			position={options.position}
+			rotation={options.rotation || [ 0, 0, 0 ]}
+		>
+			<textGeometry
+				attach="geometry"
+				args={[ string, { ...{ font }, ...props } ]}
+				onUpdate={(geo) => geo.center()}
+			/>
+			<meshStandardMaterial
+				attach="material"
+				color={options.color || '#f5f50f'}
+				metalness={1.0}
+				roughness={0.7}
+			/>
 		</mesh>
 	)
 }
