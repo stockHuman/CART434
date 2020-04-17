@@ -16,6 +16,10 @@ function Floor({ position = [ 0, 0, 0 ], rotation = [ 0, 0, 0 ] }) {
 	)
 }
 
+function rand(min = 0, max = 1) {
+  return Math.random() * (max - min) + min;
+}
+
 export default function Scene(props) {
 	let objects = []
 
@@ -29,8 +33,8 @@ export default function Scene(props) {
 			url = data[property].url
 			objects.push({
 				url: url,
-				overlay: `12 AA batteries - ${Math.floor(Math.random() * 5)}GWh`,
-				position: [ 2.5 - Math.random() * 5, 6 + Math.random() * 30, Math.random() ],
+				overlay: data[property].info || '',
+				position: [ rand(-5, 4), rand(6, 30), rand(-3, 3) ],
 				rotation: [Math.PI - Math.random(), Math.random(), Math.random()],
 				key: Math.random(),
 			})
