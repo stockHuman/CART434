@@ -4,6 +4,7 @@ export default () => {
 	return (
 		<section id="about" role="complementary">
 			<h3>Sources</h3>
+			<p>Data was compiled from a variety of academic and popular sources, and when necessary, interpolated to arrive at the figures that comprise the back-end of this app.</p>
 			<ul>
 				<li>YouTube video power usage: <a href="https://sustainabilityillustrated.com/en/2016/04/21/energy-use-youtube-videos/">Minute Earth</a></li>
 				<li>LTE by application: <a href="https://res.mdpi.com/d_attachment/energies/energies-12-00184/article_deploy/energies-12-00184.pdf">Modeling the Total Energy Consumption of Mobile Network Services and Applications</a>, Table 1</li>

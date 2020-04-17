@@ -3,6 +3,16 @@
 	background: #141414;
 	color: var(--col-text-light);
 	line-height: 1.4;
+	h3 {
+		@extend %mono;
+		text-transform: uppercase;
+		letter-spacing: 8px;
+		margin-bottom: 1em;
+	}
+	a {
+		color: lightblue;
+		font-style: italic;
+	}
 }
 
 @include media('<tablet') {
