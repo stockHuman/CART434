@@ -12,6 +12,7 @@ export default () => {
 				<li>Streaming on Netflix: <a href="https://www.carbonbrief.org/factcheck-what-is-the-carbon-footprint-of-streaming-video-on-netflix">CarbonBrief</a></li>
 				<li>Insights into website sustainability and server usage (<a href="https://www.lowtechmagazine.com/2020/01/how-sustainable-is-a-solar-powered-website.html">lowtechmagazine</a>)</li>
 				<li>recent article on emissions and energy use of the internet (<a href="https://dannyvankooten.com/website-carbon-emissions">dannyvankooten</a>)</li>
+				<li>Energy used to brew a cup of coffee (<a href="https://business.directenergy.com/blog/2017/september/international-coffee-day">DirectEnergy</a>, using 0.08Wh as an average between drip and espresso)</li>
 			</ul>
 		</section>
 	)
