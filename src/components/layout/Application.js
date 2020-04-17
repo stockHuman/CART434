@@ -7,14 +7,17 @@ import Text from '../canvas/Text'
 import { equivalencies } from '../../data'
 
 export default class Application extends Component {
-	constructor (props) {
+	constructor(props) {
 		super(props)
 		this.state = {
-			values: {youtube: 0, netflix: 0, facebook: 0, LTE: 0, skype: 0}, // preset or entered values
+			values: { youtube: 0, netflix: 0, facebook: 0, LTE: 0, skype: 0, browsing: 0, gaming: 0 }, // preset or entered values
 			wattage: { value: 0, unit: 'Wh' }, // consumption per annum
-			objects: { // objects that take up that wattage
-				bean: 0
-			}
+			objects: {
+				// objects that take up that wattage
+				bean: 0,
+				arm: 0,
+				container: 0,
+			},
 		}
 		this.ref = createRef()
 
@@ -22,49 +25,71 @@ export default class Application extends Component {
 		this.changePreset = this.changePreset.bind(this)
 	}
 
-	computeObjects () {
+	computeObjects() {
 		console.log('test')
 		// test behaviour
 		let { objects } = this.state
 		const { children } = this.ref.current
 
-		const fields = Array.from(children).map(el => {
+		const fields = Array.from(children).map((el) => {
 			if (el.className === 'input-group') {
-				return ({
+				return {
 					type: 'hour',
 					data: {
 						name: el.lastChild.attributes.name.value,
-						value: parseInt(el.lastChild.value || el.lastChild.attributes.placeholder.value)
-					}
-				})
+						value: parseInt(el.lastChild.value || el.lastChild.attributes.placeholder.value),
+					},
+				}
 			} else if (el.tagName === 'SELECT') {
-				return ({ type: 'preset', data: {
-					name: el.attributes.name.value,
-					value: parseInt(el.selectedOptions[0].value)
-				}})
-			} else { return null }
+				return {
+					type: 'preset',
+					data: {
+						name: el.attributes.name.value,
+						value: parseInt(el.selectedOptions[0].value),
+					},
+				}
+			} else {
+				return null
+			}
 		})
 
-		const hourInputs = fields.filter(i => i && i.type === 'hour')
-		const presetInputs = fields.filter(i => i && i.type === 'preset')
+		const hourInputs = fields.filter((i) => i && i.type === 'hour')
+		const presetInputs = fields.filter((i) => i && i.type === 'preset')
 
-		const yearlyWatts = wattHours => wattHours * 365
+		const yearlyWatts = (wattHours) => wattHours * 365
 
 		let watts = 0
-		hourInputs.forEach(({data})=> {
+		hourInputs.forEach(({ data }) => {
 			watts += yearlyWatts(equivalencies[data.name] * data.value)
 		})
 
 		switch (presetInputs[1].data.value) {
-			case 0: watts += yearlyWatts(equivalencies.baseline.phone); break;
-			case 1: watts += yearlyWatts(equivalencies.baseline.tablet); break;
-			case 2: watts += yearlyWatts(equivalencies.baseline.laptop); break;
-			case 3: watts += yearlyWatts(equivalencies.baseline.glaptop); break;
-			case 4: watts += yearlyWatts(equivalencies.baseline.desktop); break;
-			case 5: watts += yearlyWatts(equivalencies.baseline.desktop); break;
-			case 6: watts += yearlyWatts(equivalencies.baseline.desktop); break;
-			case 7: watts += yearlyWatts(equivalencies.baseline.desktop); break;
-			default: break;
+			case 0:
+				watts += yearlyWatts(equivalencies.baseline.phone)
+				break
+			case 1:
+				watts += yearlyWatts(equivalencies.baseline.tablet)
+				break
+			case 2:
+				watts += yearlyWatts(equivalencies.baseline.laptop)
+				break
+			case 3:
+				watts += yearlyWatts(equivalencies.baseline.glaptop)
+				break
+			case 4:
+				watts += yearlyWatts(equivalencies.baseline.desktop)
+				break
+			case 5:
+				watts += yearlyWatts(equivalencies.baseline.desktop)
+				break
+			case 6:
+				watts += yearlyWatts(equivalencies.baseline.desktop)
+				break
+			case 7:
+				watts += yearlyWatts(equivalencies.baseline.desktop)
+				break
+			default:
+				break
 		}
 
 		if (presetInputs[1].data.value === 0) {
@@ -72,28 +97,51 @@ export default class Application extends Component {
 		}
 
 		this.setState({
-			objects: { bean: objects.bean + 1 },
-			wattage:  { value: watts, unit: 'Wh' }
+			objects: { bean: objects.bean + 1, arm: objects.arm + 1 },
+			wattage: { value: watts, unit: 'Wh' },
 		})
 	}
 
-	changePreset ({ nativeEvent }) {
+	changePreset({ nativeEvent }) {
 		const v = parseInt(nativeEvent.target.value)
 		switch (v) {
 			case 0:
-				this.setState({ values: { youtube: 3, netflix: 1, facebook: 0, LTE: 0, skype: 0 }})
-				break;
-
+				this.setState({
+					values: { youtube: 3, netflix: 1, facebook: 0, LTE: 0, skype: 0, browsing: 0, gaming: 0 },
+				})
+				break
+			case 1:
+				this.setState({
+					values: { youtube: 3, netflix: 1, facebook: 0, LTE: 0, skype: 0, browsing: 0, gaming: 0 },
+				})
+				break
+			case 2:
+				this.setState({
+					values: { youtube: 3, netflix: 1, facebook: 0, LTE: 0, skype: 0, browsing: 0, gaming: 0 },
+				})
+				break
+			case 3:
+				this.setState({
+					values: { youtube: 3, netflix: 1, facebook: 0, LTE: 0, skype: 0, browsing: 0, gaming: 0 },
+				})
+				break
+			case 4:
+				this.setState({
+					values: { youtube: 3, netflix: 1, facebook: 0, LTE: 0, skype: 0, browsing: 0, gaming: 0 },
+				})
+				break
 			default:
-				this.setState({ values: { youtube: 0, netflix: 0, facebook: 0, LTE: 0, skype: 0 } })
-				break;
+				this.setState({
+					values: { youtube: 0, netflix: 0, facebook: 0, LTE: 0, skype: 0, browsing: 0, gaming: 0 },
+				})
+				break
 		}
 	}
 
-	render () {
+	render() {
 		const { wattage, objects, values } = this.state
 
-		const NumberField = ({field, name, hours = 0}) => {
+		const NumberField = ({ field, name, hours = 0 }) => {
 			return (
 				<div className="input-group">
 					<label htmlFor={name}>{field}</label>
@@ -119,6 +167,8 @@ export default class Application extends Component {
 					<NumberField hours={values.facebook} field="Hours on Facebook" name="facebook" />
 					<NumberField hours={values.LTE} field="Hours using 4G LTE" name="LTE" />
 					<NumberField hours={values.skype} field="Hours videoconferencing" name="skype" />
+					<NumberField hours={values.browsing} field="Hours browsing" name="browsing" />
+					<NumberField hours={values.gaming} field="Hours gaming (avg.)" name="gaming" />
 					<select name="device">
 						<option value="-1">Primary device</option>
 						<option value="0">Smartphone</option>
@@ -132,7 +182,10 @@ export default class Application extends Component {
 					</select>
 					<div className="explainer">
 						<hr />
-						<p>Enter in the number of hours you spend daily for each of the listed activities, if any, and on what device most often.</p>
+						<p>
+							Enter in the number of hours you spend daily for each of the listed activities, if any, and
+							on what device most often.
+						</p>
 					</div>
 
 					<button onClick={this.computeObjects}>Calculate Wattage</button>
@@ -140,12 +193,10 @@ export default class Application extends Component {
 				<Viewport>
 					<Text
 						string={wattage.value + ' ' + wattage.unit}
-						options={
-							{
-								position: [0, 2, -10],
-								color: '#3CB371'
-							}
-						}
+						options={{
+							position: [ 0, 2, -10 ],
+							color: '#3CB371',
+						}}
 						size={2}
 						bevelEnabled={true}
 						height={0.1}
@@ -156,8 +207,12 @@ export default class Application extends Component {
 					/>
 					<Scene {...objects} />
 				</Viewport>
-				<span id="app-inayr" className="info">in a year</span>
-				<span id="app-wattage" className="info">{wattage.value} {wattage.unit}</span>
+				<span id="app-inayr" className="info">
+					in a year
+				</span>
+				<span id="app-wattage" className="info">
+					{wattage.value} {wattage.unit}
+				</span>
 			</section>
 		)
 	}
