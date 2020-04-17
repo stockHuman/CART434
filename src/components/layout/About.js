@@ -18,6 +18,7 @@ export default () => {
 				<li>Insights into website sustainability and server usage (<a href="https://www.lowtechmagazine.com/2020/01/how-sustainable-is-a-solar-powered-website.html">lowtechmagazine</a>)</li>
 				<li>recent article on emissions and energy use of the internet (<a href="https://dannyvankooten.com/website-carbon-emissions">dannyvankooten</a>)</li>
 				<li>Energy used to brew a cup of coffee (<a href="https://business.directenergy.com/blog/2017/september/international-coffee-day">DirectEnergy</a>, using 0.08Wh as an average between drip and espresso)</li>
+				<li>Emma Mærsk energy use per hour <a href="https://en.wikipedia.org/wiki/Emma_M%C3%A6rsk">WikiPedia, Wärtsilä-Sulzer RTA96-C</a></li>
 			</ul>
 			</div>
 		</section>
