@@ -3,6 +3,14 @@
 	background: #141414;
 	color: var(--col-text-light);
 	line-height: 1.4;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 2em;
+
+	.half {
+		margin-bottom: 2em;
+		max-width: 700px;
+	}
 	h3 {
 		@extend %mono;
 		text-transform: uppercase;
@@ -15,6 +23,8 @@
 	}
 }
 
-@include media('<tablet') {
-
+@include media('<desktop') {
+	#about {
+		display: block;
+	}
 }

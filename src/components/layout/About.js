@@ -3,6 +3,11 @@ import React from 'react'
 export default () => {
 	return (
 		<section id="about" role="complementary">
+			<div className="half">
+				<h3>About</h3>
+				<p>This project was conceived</p>
+			</div>
+			<div className="half">
 			<h3>Sources</h3>
 			<p>Data was compiled from a variety of academic and popular sources, and when necessary, interpolated to arrive at the figures that comprise the back-end of this app.</p>
 			<ul>
@@ -14,6 +19,7 @@ export default () => {
 				<li>recent article on emissions and energy use of the internet (<a href="https://dannyvankooten.com/website-carbon-emissions">dannyvankooten</a>)</li>
 				<li>Energy used to brew a cup of coffee (<a href="https://business.directenergy.com/blog/2017/september/international-coffee-day">DirectEnergy</a>, using 0.08Wh as an average between drip and espresso)</li>
 			</ul>
+			</div>
 		</section>
 	)
 }
