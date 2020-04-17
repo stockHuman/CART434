@@ -25,10 +25,13 @@ export default function Scene(props) {
 
 		// the app has calculated that such an object should exist
 		for (let i = 0; i < props[property]; i++) {
+			let url = data.bean.url
+			url = data[property].url
 			objects.push({
-				url: data.arm.url,
-				info: `12 AA batteries - ${Math.floor(Math.random() * 5)}GWh`,
-				position: [ 2.5 - Math.random() * 5, Math.random() * 30, Math.random() ],
+				url: url,
+				overlay: `12 AA batteries - ${Math.floor(Math.random() * 5)}GWh`,
+				position: [ 2.5 - Math.random() * 5, 6 + Math.random() * 30, Math.random() ],
+				rotation: [Math.PI - Math.random(), Math.random(), Math.random()],
 				key: Math.random(),
 			})
 		}
@@ -36,11 +39,10 @@ export default function Scene(props) {
 
 	return (
 		<Physics iterations={10}>
-			<Floor rotation={[ -Math.PI / 2, 0, 0 ]} />
 			{objects.map((object) => (
-				<Model url={object.url} position={object.position} overlay={object.info} key={object.key} />
+				<Model {...object} />
 			))}
-			<Model
+			{/* <Model
 				url={data.lamp.url}
 				position={[ 0, 15, 0 ]}
 				rotation={[ 0, 0.4, 1 ]}
@@ -53,7 +55,8 @@ export default function Scene(props) {
 				rotation={[ -1, 0.2, 1 ]}
 				mass={200}
 				overlay={'Ship A container to China from X'}
-			/>
+			/> */}
+			<Floor rotation={[ -Math.PI / 2, 0, 0 ]} />
 		</Physics>
 	)
 }
