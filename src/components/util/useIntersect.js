@@ -10,7 +10,7 @@ export default function useIntersection(options) {
 			observer.observe(ref.current)
 			return () => observer.disconnect()
 		},
-		[ ref ]
+		[ ref, options ]
 	)
 	return { observerEntry, ref }
 }
