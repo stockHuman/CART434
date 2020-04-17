@@ -6,12 +6,16 @@
 	width: 100%;
 	text-align: right;
 	z-index: 1;
+	transition: background .3s ease-in-out;
+	&.transparent {
+		background: rgba(0, 0, 0, 0.001);
+	}
 	ul {
 		margin-right: 2em;
 	}
 	li {
 		list-style: none;
-		margin-top: 0.34em;
+		margin-top: $nav-height / 4;
 		a {
 			@extend %mono;
 			color: var(--col-ac-dark);
