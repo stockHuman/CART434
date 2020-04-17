@@ -21,18 +21,21 @@ const home = {
 const battery = {
 	url: modelBattery,
 	mass: 1,
-	overlay: 'Use 100 AA batteries',
+	info: 'Use 100 AA batteries',
 }
 
 const container = {
 	url: modelContainer,
 	mass: 200,
+	cost: 81000,
+	info: 'Power a Mærsk E-Class for an hour'
 }
 
 const bean = {
 	url: modelBean,
 	mass: 0.4,
 	cost: 0.08,
+	info: 'Brew a cup of coffee'
 }
 
 const airplane = {
@@ -42,7 +45,9 @@ const airplane = {
 
 const arm = {
 	url: modelArm,
-	mass: 1
+	mass: 1,
+	cost: 80,
+	info: 'manipulate objects for an hour'
 }
 
 export default { lamp, battery, container, bean, airplane, arm, home }
@@ -55,6 +60,7 @@ export const equivalencies = {
 	skype: 360, // given similar assumptions to YouTube
 	netflix: 260, // via IEA study, derived from CarbonBrief analysis
 	browsing: 100,
+	gaming: 240, // computed via a rough average of common processor / GPU combinations
 	baseline: { // add to total (not multiplied by hours per day)
 		phone: 8, // (~2500mAh @ 3.7V) not fully discharged every night
 		tablet: 10,
