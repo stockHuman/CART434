@@ -5,11 +5,17 @@ import modelContainer from './assets/meshes/Container.glb'
 import modelBean from './assets/meshes/Bean.glb'
 import modelPlane from './assets/meshes/Plane.glb'
 import modelArm from './assets/meshes/Arm.glb'
+import modelHome from './assets/meshes/Home.glb'
 
 
 const lamp = {
 	url: modelLamp,
 	mass: 5
+}
+
+const home = {
+	url: modelHome,
+	mass: 200
 }
 
 const battery = {
@@ -25,7 +31,8 @@ const container = {
 
 const bean = {
 	url: modelBean,
-	mass: 0.4
+	mass: 0.4,
+	cost: 0.08,
 }
 
 const airplane = {
@@ -38,7 +45,7 @@ const arm = {
 	mass: 1
 }
 
-export default { lamp, battery, container, bean, airplane, arm }
+export default { lamp, battery, container, bean, airplane, arm, home }
 
 // All values represented in Watt-hours
 export const equivalencies = {
@@ -47,12 +54,13 @@ export const equivalencies = {
 	facebook: 0, // update
 	skype: 360, // given similar assumptions to YouTube
 	netflix: 260, // via IEA study, derived from CarbonBrief analysis
+	browsing: 100,
 	baseline: { // add to total (not multiplied by hours per day)
 		phone: 8, // (~2500mAh @ 3.7V) not fully discharged every night
 		tablet: 10,
 		laptop: 45, // based off of common laptop usage patterns, assuming 2015 mbp
 		glaptop: 100,
-		desktop: 120,
+		desktop: 170,
 	},
 	constants: {
 		router: 8,
