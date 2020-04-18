@@ -4,7 +4,7 @@ import Viewport from '../canvas/Viewport'
 import Scene from '../canvas/Scene'
 import Text from '../canvas/Text'
 
-import { equivalencies } from '../../data'
+import objs, { equivalencies } from '../../data'
 
 export default class Application extends Component {
 	constructor(props) {
@@ -17,7 +17,8 @@ export default class Application extends Component {
 				bean: 0,
 				arm: 0,
 				container: 0,
-				lamp: 0
+				lamp: 0,
+				home: 0
 			},
 		}
 		this.ref = createRef()
@@ -36,7 +37,7 @@ export default class Application extends Component {
 					type: 'hour',
 					data: {
 						name: el.lastChild.attributes.name.value,
-						value: parseInt(el.lastChild.value || el.lastChild.attributes.placeholder.value),
+						value: parseFloat(el.lastChild.value || el.lastChild.attributes.placeholder.value),
 					},
 				}
 			} else if (el.tagName === 'SELECT') {
@@ -99,14 +100,29 @@ export default class Application extends Component {
 		let unit = 'Wh'
 		let twat = watts // temp-watts :P
 
+		const sub = (prop, max) => {
+			let count = Math.min(Math.floor(twat / objs[prop].cost), max)
+			objects[prop] = count
+			twat -= count * objs[prop].cost
+		}
+
 		if (watts < 10000) {
-
+			sub("bean", 20)
 		} else if (watts >= 10000 && watts < 400000) {
-
+			sub("lamp", 4)
 		} else if (watts >= 400000 && watts < 81000 ){
 
 		} else {
-			objects.container = 1
+			objects.container = 1 // at least one container
+			twat -= objs.container.cost
+
+			if (twat >= objs.home.cost) {
+				objects.home = 1
+				twat -= objs.home.cost
+			}
+
+			objects.lamp = Math.floor(twat / objs.lamp.cost)
+			console.log('Visualizing this might add to your total (it will kill your computer).')
 		}
 
 		this.setState({
@@ -157,7 +173,7 @@ export default class Application extends Component {
 				<div className="input-group">
 					<label htmlFor={name}>{field}</label>
 					<input min="0" name={name} size="2" type="number" max="24" placeholder={hours} onBlur={(e) => {
-						let num = parseInt(e.nativeEvent.target.value)
+						let num = parseFloat(e.nativeEvent.target.value)
 						if (isNaN(num)) num = 0
 						if (num > 24) num = 24
 						if (num < 0) num = 0
