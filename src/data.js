@@ -10,7 +10,9 @@ import modelHome from './assets/meshes/Home.glb'
 
 const lamp = {
 	url: modelLamp,
-	mass: 5
+	mass: 5,
+	cost: 960,
+	info: 'Light a small park for a night'
 }
 
 const home = {
