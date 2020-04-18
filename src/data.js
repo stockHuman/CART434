@@ -11,7 +11,7 @@ import modelHome from './assets/meshes/Home.glb'
 const lamp = {
 	url: modelLamp,
 	mass: 5,
-	cost: 960,
+	cost: 1960,
 	info: 'Light a small park for a night'
 }
 
@@ -25,6 +25,7 @@ const home = {
 const battery = {
 	url: modelBattery,
 	mass: 1,
+	cost: 390,
 	info: 'Use 100 AA batteries',
 }
 
@@ -44,7 +45,9 @@ const bean = {
 
 const airplane = {
 	url: modelPlane,
-	mass: 6000
+	mass: 6000,
+	cost: 300000,
+	info: 'Power a 787 flight from London to NYC'
 }
 
 const arm = {
