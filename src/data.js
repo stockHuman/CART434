@@ -17,7 +17,9 @@ const lamp = {
 
 const home = {
 	url: modelHome,
-	mass: 200
+	mass: 4000,
+	cost: 640000,
+	info: 'power a small home for a year'
 }
 
 const battery = {
@@ -42,12 +44,12 @@ const bean = {
 
 const airplane = {
 	url: modelPlane,
-	mass: 600
+	mass: 6000
 }
 
 const arm = {
 	url: modelArm,
-	mass: 1,
+	mass: 2,
 	cost: 80,
 	info: 'manipulate objects for an hour'
 }
@@ -58,7 +60,7 @@ export default { lamp, battery, container, bean, airplane, arm, home }
 export const equivalencies = {
 	youtube: 222, // 60 * 3.75Wh (2500mAh @ 1.5V), or 60 min * 1 AA battery / min
 	LTE: 0.55, // average for most smarphone activities over LTE
-	facebook: 0, // update
+	facebook: 90, // update
 	skype: 360, // given similar assumptions to YouTube
 	netflix: 260, // via IEA study, derived from CarbonBrief analysis
 	browsing: 100,
