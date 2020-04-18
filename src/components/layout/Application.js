@@ -17,6 +17,7 @@ export default class Application extends Component {
 				bean: 0,
 				arm: 0,
 				container: 0,
+				lamp: 0
 			},
 		}
 		this.ref = createRef()
@@ -26,9 +27,7 @@ export default class Application extends Component {
 	}
 
 	computeObjects() {
-		console.log('test')
 		// test behaviour
-		let { objects } = this.state
 		const { children } = this.ref.current
 
 		const fields = Array.from(children).map((el) => {
@@ -96,9 +95,18 @@ export default class Application extends Component {
 			watts += equivalencies.constants.celltower
 		}
 
+		let objects = {}
+		let unit = 'Wh'
+
+		if (watts < 10000) {
+
+		} else {
+
+		}
+
 		this.setState({
-			objects: { bean: objects.bean + 1, arm: objects.arm + 1 },
-			wattage: { value: watts, unit: 'Wh' },
+			objects,
+			wattage: { value: watts, unit },
 		})
 	}
 
@@ -131,9 +139,7 @@ export default class Application extends Component {
 				})
 				break
 			default:
-				this.setState({
-					values: { youtube: 0, netflix: 0, facebook: 0, LTE: 0, skype: 0, browsing: 0, gaming: 0 },
-				})
+
 				break
 		}
 	}
@@ -145,7 +151,10 @@ export default class Application extends Component {
 			return (
 				<div className="input-group">
 					<label htmlFor={name}>{field}</label>
-					<input min="0" name={name} size="2" type="number" placeholder={hours} />
+					<input min="0" name={name} size="2" type="number" placeholder={hours} onChange={(e) => {
+						let v = {...values, [name]: parseInt(e.nativeEvent.data)}
+						this.setState({values: v})
+					}} />
 				</div>
 			)
 		}
@@ -167,7 +176,7 @@ export default class Application extends Component {
 					<NumberField hours={values.facebook} field="Hours on Facebook" name="facebook" />
 					<NumberField hours={values.LTE} field="Hours using 4G LTE" name="LTE" />
 					<NumberField hours={values.skype} field="Hours videoconferencing" name="skype" />
-					<NumberField hours={values.browsing} field="Hours browsing" name="browsing" />
+					<NumberField hours={values.browsing} field="Hours web browsing" name="browsing" />
 					<NumberField hours={values.gaming} field="Hours gaming (avg.)" name="gaming" />
 					<select name="device">
 						<option value="-1">Primary device</option>
