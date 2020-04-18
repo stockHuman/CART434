@@ -4,7 +4,7 @@ import { usePlane, Physics } from 'use-cannon'
 import Model from './Model'
 import data from '../../data'
 
-// via https://codesandbox.io/s/r3f-cannon-instanced-physics-g1s88
+
 function Floor({ position = [ 0, 0, 0 ], rotation = [ 0, 0, 0 ] }) {
 	// Register plane as a physics body with zero mass
 	const [ ref ] = usePlane(() => ({ mass: 0, position, rotation }))
