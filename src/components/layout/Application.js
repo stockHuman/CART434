@@ -97,11 +97,16 @@ export default class Application extends Component {
 
 		let objects = {}
 		let unit = 'Wh'
+		let twat = watts // temp-watts :P
 
 		if (watts < 10000) {
 
-		} else {
+		} else if (watts >= 10000 && watts < 400000) {
 
+		} else if (watts >= 400000 && watts < 81000 ){
+
+		} else {
+			objects.container = 1
 		}
 
 		this.setState({
@@ -135,7 +140,7 @@ export default class Application extends Component {
 				break
 			case 4:
 				this.setState({
-					values: { youtube: 3, netflix: 1, facebook: 0, LTE: 0, skype: 0, browsing: 0, gaming: 0 },
+					values: { youtube: 3, netflix: 1, facebook: 0.5, LTE: 0, skype: 0, browsing: 0, gaming: 0 },
 				})
 				break
 			default:
@@ -151,8 +156,8 @@ export default class Application extends Component {
 			return (
 				<div className="input-group">
 					<label htmlFor={name}>{field}</label>
-					<input min="0" name={name} size="2" type="number" placeholder={hours} onChange={(e) => {
-						let v = {...values, [name]: parseInt(e.nativeEvent.data)}
+					<input min="0" name={name} size="2" type="number" max="24" placeholder={hours} onBlur={(e) => {
+						let v = {...values, [name]: parseInt(e.nativeEvent.target.value)}
 						this.setState({values: v})
 					}} />
 				</div>
