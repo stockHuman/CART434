@@ -46,20 +46,6 @@ export default function Scene(props) {
 			{objects.map((object) => (
 				<Model {...object} />
 			))}
-			{/* <Model
-				url={data.lamp.url}
-				position={[ 0, 15, 0 ]}
-				rotation={[ 0, 0.4, 1 ]}
-				mass={3}
-				overlay={'Light a small town for a week'}
-			/>
-			<Model
-				url={data.container.url}
-				position={[ 2, 20, -6 ]}
-				rotation={[ -1, 0.2, 1 ]}
-				mass={200}
-				overlay={'Ship A container to China from X'}
-			/> */}
 			<Floor rotation={[ -Math.PI / 2, 0, 0 ]} />
 		</Physics>
 	)
