@@ -5,6 +5,7 @@ export default () => (
 		<p className="copyright">© Michael Hemingway 2020</p>
 		<div className="footer-links">
 			<a href="https://github.com/stockHuman/CART434">Project Source</a>
+			<a href="https://michaelhemingway.com/projects/data-falls">Meta</a>
 			<a href="https://michaelhemingway.com">Other Works</a>
 		</div>
 	</footer>
