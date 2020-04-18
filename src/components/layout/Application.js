@@ -157,7 +157,11 @@ export default class Application extends Component {
 				<div className="input-group">
 					<label htmlFor={name}>{field}</label>
 					<input min="0" name={name} size="2" type="number" max="24" placeholder={hours} onBlur={(e) => {
-						let v = {...values, [name]: parseInt(e.nativeEvent.target.value)}
+						let num = parseInt(e.nativeEvent.target.value)
+						if (isNaN(num)) num = 0
+						if (num > 24) num = 24
+						if (num < 0) num = 0
+						let v = {...values, [name]: num}
 						this.setState({values: v})
 					}} />
 				</div>
@@ -225,7 +229,7 @@ export default class Application extends Component {
 					in a year
 				</span>
 				<span id="app-wattage" className="info">
-					{wattage.value} {wattage.unit}
+					{wattage.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} {wattage.unit}
 				</span>
 			</section>
 		)
