@@ -7,7 +7,7 @@ import modelPlane from './assets/meshes/Plane.glb'
 import modelArm from './assets/meshes/Arm.glb'
 import modelHome from './assets/meshes/Home.glb'
 
-
+// See about section for energy citations
 const lamp = {
 	url: modelLamp,
 	mass: 5,
