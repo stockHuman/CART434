@@ -48,6 +48,7 @@ export default function Viewport (props) {
 				penumbra={0.2}
         castShadow
       />
+			<ambientLight intensity={0.2} />
 			<fog attach="fog" args={[0xdfdfdf, 35, 65]} />
 
 			<directionalLight
