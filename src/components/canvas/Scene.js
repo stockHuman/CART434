@@ -33,10 +33,11 @@ export default function Scene(props) {
 			url = data[property].url
 			objects.push({
 				url: url,
+				show: i === 0 ? true : false,
 				overlay: data[property].info || '',
 				position: [ rand(-5, 4), rand(6, 30), rand(-3, 3) ],
 				rotation: [Math.PI - Math.random(), Math.random(), Math.random()],
-				key: Math.random(),
+				key: `${i}-${property}-${Math.random()}`,
 			})
 		}
 	}

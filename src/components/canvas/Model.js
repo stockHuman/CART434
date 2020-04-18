@@ -27,7 +27,7 @@ export default function Model(props) {
 
 	return (
 		<group ref={ref}>
-			<Dom className="model-info"><span>{props.overlay}</span></Dom>
+			{props.show ? <Dom className="model-info"><span>{props.overlay}</span></Dom> : null }
 			<primitive object={cloned} />
 			{props.debug ?
 				<mesh geometry={geo}>
