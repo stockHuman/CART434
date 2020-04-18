@@ -96,32 +96,39 @@ export default class Application extends Component {
 			watts += equivalencies.constants.celltower
 		}
 
+		watts = Math.floor(watts)
+
 		let objects = {}
 		let unit = 'Wh'
 		let twat = watts // temp-watts :P
 
 		const sub = (prop, max) => {
 			let count = Math.min(Math.floor(twat / objs[prop].cost), max)
+			if (count < 1) return
 			objects[prop] = count
 			twat -= count * objs[prop].cost
 		}
 
 		if (watts < 10000) {
 			sub("bean", 20)
+			sub("arm", 8)
 		} else if (watts >= 10000 && watts < 400000) {
 			sub("lamp", 4)
+			sub("bean", 10)
+			sub("arm", 20)
 		} else if (watts >= 400000 && watts < 81000 ){
-
+			sub("container", 3)
+			sub("bean", 10)
+			sub("lamp", 10)
+			sub("home", 1)
+			sub("arm", 8)
 		} else {
-			objects.container = 1 // at least one container
-			twat -= objs.container.cost
-
-			if (twat >= objs.home.cost) {
-				objects.home = 1
-				twat -= objs.home.cost
-			}
-
-			objects.lamp = Math.floor(twat / objs.lamp.cost)
+			sub("container", 6)
+			sub("home", 2)
+			sub("lamp", 40)
+			sub("battery", 10)
+			sub("bean", 30)
+			sub("arm", 16)
 			console.log('Visualizing this might add to your total (it will kill your computer).')
 		}
 
@@ -151,7 +158,7 @@ export default class Application extends Component {
 				break
 			case 3:
 				this.setState({
-					values: { youtube: 3, netflix: 1, facebook: 0, LTE: 0, skype: 0, browsing: 0, gaming: 0 },
+					values: { youtube: 0, netflix: 0, facebook: 0, LTE: 0, skype: 2, browsing: 1, gaming: 7 },
 				})
 				break
 			case 4:
